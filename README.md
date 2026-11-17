@@ -1,125 +1,66 @@
-# Java
-
-* { box-sizing: border-box; }
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f1f6;
-  margin: 0;
-  padding: 30px;
-}
-.container {
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 30px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.10);
-}
-h1 { color: #43054e; text-align: center; }
-label { display: block; margin-top: 15px; }
-input {
-  width: 100%; padding: 12px; margin-top: 8px;
-  border: 1px solid #ccc; border-radius: 6px;
-}
-button {
-  width: 100%; margin-top: 20px; padding: 12px;
-  background: #662c92; color: white;
-  border: 0; border-radius: 6px; cursor: pointer;
-}
-button:hover { background: #43054e; }
-#resultado, #resultadoMedia {
-  margin-top: 20px; padding: 15px;
-  background: #f3f4f6; border-radius: 6px;
-}
-#resultadoMedia.erro { background: #fdecea; color: #b3261e; }
-#resultadoMedia.sucesso { background: #e8f5e9; color: #1b5e20; font-weight: bold; }
-
-Aula01-JavaScript/
-├── index.html
-├── style.css
-├── script.js
-└── evidencias/
-    ├── calculadora.png
-    └── media-estudante.png
-    /* ===== LABORATÓRIO 1 — Cadastro simples de usuário (ver no Console) ===== */
-const nome = "Lucas Ferreira";
-const email = "lucas@email.com";
-let idade = 24;
-let usuarioAtivo = true;
-
-console.log("DADOS DO USUÁRIO");
-console.log("Nome:", nome);
-console.log("E-mail:", email);
-console.log("Idade:", idade);
-console.log("Usuário ativo:", usuarioAtivo);
-
-// Tarefa 4: estimar a idade a partir do ano de nascimento (referência 2026)
-const anoNascimento = 2002;
-const idadeEstimada = 2026 - anoNascimento;
-console.log("Ano de nascimento:", anoNascimento);
-console.log("Idade estimada (pode variar conforme o aniversário):", idadeEstimada);
-
-/* ===== LABORATÓRIO 2 — Calculadora de operações ===== */
-const botao = document.getElementById("btnCalcular");
-
-botao.addEventListener("click", function () {
-  const campo1 = document.getElementById("numero1");
-  const campo2 = document.getElementById("numero2");
-  const resultado = document.getElementById("resultado");
-
-  if (campo1.value === "" || campo2.value === "") {
-    resultado.textContent = "Preencha os dois números.";
-    return;
-  }
-
-  const numero1 = Number(campo1.value);
-  const numero2 = Number(campo2.value);
-
-  const soma = numero1 + numero2;
-  const subtracao = numero1 - numero2;
-  const multiplicacao = numero1 * numero2;
-  const divisao = numero2 === 0
-    ? "Não é possível dividir por zero."
-    : numero1 / numero2;
-
-  resultado.innerHTML = `
-    <p>Soma: ${soma}</p>
-    <p>Subtração: ${subtracao}</p>
-    <p>Multiplicação: ${multiplicacao}</p>
-    <p>Divisão: ${divisao}</p>
-  `;
-});
-
-/* ===== LABORATÓRIO 3 — Calculadora de média ===== */
-const botaoMedia = document.getElementById("calcular");
-
-botaoMedia.addEventListener("click", function () {
-  const campos = [
-    document.getElementById("nota1"),
-    document.getElementById("nota2"),
-    document.getElementById("nota3")
-  ];
-  const saida = document.getElementById("resultadoMedia");
-
-  saida.className = "";
-
-  // Rejeita campos vazios
-  if (campos.some(function (c) { return c.value === ""; })) {
-    saida.textContent = "Erro: preencha as três notas.";
-    saida.className = "erro";
-    return;
-  }
-
-  const notas = campos.map(function (c) { return Number(c.value); });
-
-  // Aceita somente notas entre 0 e 10
-  if (notas.some(function (n) { return isNaN(n) || n < 0 || n > 10; })) {
-    saida.textContent = "Erro: as notas devem estar entre 0 e 10.";
-    saida.className = "erro";
-    return;
-  }
-
-  const media = (notas[0] + notas[1] + notas[2]) / 3;
-  saida.textContent = "Média: " + Number(media.toFixed(2));
-  saida.className = "sucesso";
-});
+[techmundo-corrigido (1).html](https://github.com/user-attachments/files/34944857/techmundo-corrigido.1.html)
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portal de notícias sobre a evolução mundial da tecnologia.">
+<title>TechMundo | Tecnologia mundial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--dark:#101f31;--ink:#142c49;--green:#c8f169;--muted:#687789;--line:#e3e8eb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--dark);font:16px 'DM Sans',sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}.container{width:min(1120px,calc(100% - 40px));margin:auto}
+header{position:sticky;top:0;background:white;border-bottom:1px solid var(--line);z-index:5}.bar{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.logo{font:700 25px 'Space Grotesk';letter-spacing:-1px}.logo b{background:var(--green);padding:2px 9px;border-radius:8px;margin-right:6px}.logo span{color:#8095a6}nav{display:flex;gap:24px;font-size:13px;font-weight:600}nav a:hover{color:#69932c}.menu{display:none;border:0;background:white;font-size:24px}
+.ticker{background:#f2f5f3;font-size:11px;padding:8px 0;color:#65716b}.ticker .container{display:flex;justify-content:space-between}.ticker strong{color:#39502d;letter-spacing:1px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center;padding:65px 0}.eyebrow{font-size:10px;letter-spacing:2px;font-weight:700;color:#789047}.hero h1{font:700 clamp(48px,6vw,76px)/1.03 'Space Grotesk';letter-spacing:-4px;margin:12px 0}.hero h1 em{font-style:normal;color:#719c31}.intro{color:var(--muted);max-width:440px}.button{display:inline-block;background:var(--dark);color:white;padding:13px 20px;border-radius:4px;font-size:12px;font-weight:700;margin-top:14px}
+.visual{height:340px;border-radius:9px;background:radial-gradient(circle at 65% 35%,#b9e875,transparent 25%),radial-gradient(circle at 30% 75%,#39828d,transparent 30%),linear-gradient(135deg,#183957,#071522);display:grid;place-items:center;overflow:hidden}.glass{padding:30px;background:#ffffff12;border:1px solid #ffffff55;color:white;backdrop-filter:blur(8px);width:65%}.glass small{color:var(--green);letter-spacing:2px}.glass strong{display:block;font:600 32px/1.1 'Space Grotesk';margin:15px 0}
+section.content{padding:55px 0}.heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px}.heading h2,.dark h2,.timeline h2{font:700 35px 'Space Grotesk';letter-spacing:-1.5px;margin:0}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.filters button{border:1px solid var(--line);background:white;border-radius:30px;padding:8px 14px;cursor:pointer}.filters button.active,.filters button:hover{background:var(--dark);color:white}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{border:1px solid var(--line);border-radius:7px;overflow:hidden}.card.featured{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr}.art{min-height:185px;display:grid;place-items:center;color:#e5ffb9;font-size:85px;background:radial-gradient(circle,#9dcf58,#386d69 38%,#152e4c 78%)}.space{background:radial-gradient(circle,#c1b5f7,#594e8b 30%,#172747 75%)}.network{background:linear-gradient(135deg,#132d46,#1d7a8a)}.green{background:radial-gradient(circle,#d2ee9a,#63945a 40%,#193b3d)}.cardbody{padding:20px}.tag{font-size:9px;letter-spacing:1px;color:#789047;font-weight:700}.card h3{font:600 19px/1.25 'Space Grotesk';margin:9px 0}.card p{font-size:12px;color:var(--muted)}.read{font-size:11px;font-weight:700}.note{font-size:10px;color:#87919d}
+.dark{background:var(--dark);color:white;padding:70px 0}.darkgrid{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}.dark p{color:#bbc7d1;font-size:13px}.dark h2{font-size:clamp(32px,4vw,48px);line-height:1.1}.dashboard{border:1px solid #ffffff33;border-radius:8px;padding:25px;background:#ffffff0b}.bars{height:190px;display:flex;align-items:end;gap:12px;border-bottom:1px solid #ffffff44;padding:10px}.bars i{flex:1;background:#c8f16988;border-top:3px solid var(--green)}.topics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:25px}.topic{border:1px solid var(--line);padding:20px;min-height:190px}.topic b{color:#719c31;font-size:26px}.topic h3{font:600 17px 'Space Grotesk'}.topic p,.timeline p{font-size:12px;color:var(--muted)}
+.timeline{background:#f2f5f3;padding:65px 0}.events{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}.events article{border-top:2px solid #a8c66b;padding-top:14px}.events strong{font-size:11px;color:#719c31}.events h3{font:600 16px 'Space Grotesk'}
+.newsletter{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:65px 0}.newsletter h2{font:700 36px/1.1 'Space Grotesk'}.newsletter p{font-size:13px;color:var(--muted)}input{padding:14px;border:0;border-bottom:1px solid #aeb9c2;width:80%;font:14px 'DM Sans'}form button{padding:13px 18px;background:var(--green);border:0;cursor:pointer}footer{background:var(--dark);color:white;padding:35px 0;font-size:12px}footer p{color:#bac5cf}.foot{display:flex;justify-content:space-between;border-top:1px solid #ffffff33;padding-top:15px;color:#bac5cf}
+@media(max-width:760px){nav{display:none;position:absolute;top:72px;left:0;right:0;background:white;padding:20px;flex-direction:column}nav.open{display:flex}.menu{display:block}.hero,.darkgrid,.newsletter{grid-template-columns:1fr}.hero{padding:45px 0}.cards{grid-template-columns:1fr}.card.featured{grid-column:auto;display:block}.topics{grid-template-columns:1fr 1fr}.events{grid-template-columns:1fr 1fr}.heading h2{font-size:28px}.ticker .container span:nth-child(2){display:none}}
+</style>
+</head>
+<body>
+<header><div class="container bar"><a class="logo" href="#"><b>T</b>Tech<span>Mundo</span></a><button class="menu" id="menu" aria-label="Abrir menu">☰</button><nav id="nav"><a href="#noticias">Notícias</a><a href="#ia">Inteligência artificial</a><a href="#inovacao">Inovação</a><a href="#historia">História</a></nav><a href="#newsletter">Receber novidades ↗</a></div></header>
+<div class="ticker"><div class="container"><strong>● RADAR TECNOLÓGICO</strong><span>Ideias, descobertas e tendências que transformam o mundo.</span><span id="today"></span></div></div>
+<main>
+<section class="container hero"><div><p class="eyebrow">TECNOLOGIA • CIÊNCIA • FUTURO</p><h1>O futuro acontece <em>agora.</em></h1><p class="intro">Acompanhe como a tecnologia está redesenhando a sociedade, a economia e a maneira como vivemos.</p><a class="button" href="#noticias">Explorar notícias ↓</a></div><div class="visual">
+  <img src="imagens/tecnologia.svg"
+       alt="Ilustração de um planeta conectado por circuitos digitais, representando a evolução mundial da tecnologia"
+       style="width:100%;height:100%;object-fit:cover;border-radius:9px">
+</div></section>
+<section class="container content" id="noticias"><div class="heading"><div><p class="eyebrow">FIQUE POR DENTRO</p><h2>Últimas notícias</h2></div><span>Atualização editorial</span></div>
+<div class="filters"><button class="active" data-filter="all">Todas</button><button data-filter="ia">Inteligência artificial</button><button data-filter="espaco">Espaço</button><button data-filter="rede">Conectividade</button><button data-filter="verde">Sustentabilidade</button></div>
+<div class="cards">
+<article class="card featured" data-category="ia"><div class="art">◎</div><div class="cardbody"><span class="tag">INTELIGÊNCIA ARTIFICIAL</span><h3>IA generativa: da experimentação à transformação do trabalho</h3><p>Como sistemas inteligentes estão mudando processos, profissões e a relação entre pessoas e máquinas.</p><a class="read" href="#ia">Continuar lendo ↗</a></div></article>
+<article class="card" data-category="espaco"><div class="art space">◌</div><div class="cardbody"><span class="tag">EXPLORAÇÃO ESPACIAL</span><h3>Novas tecnologias ampliam os horizontes da exploração espacial</h3><p>Robótica, sensores e sistemas autônomos ajudam a investigar ambientes extremos.</p><a class="read" href="#inovacao">Continuar lendo ↗</a></div></article>
+<article class="card" data-category="rede"><div class="art network">⌁</div><div class="cardbody"><span class="tag">CONECTIVIDADE</span><h3>Redes mais rápidas conectam um planeta inteiro</h3><p>Da fibra óptica ao 5G e às pesquisas em 6G: a evolução das comunicações digitais.</p><a class="read" href="#inovacao">Continuar lendo ↗</a></div></article>
+<article class="card" data-category="verde"><div class="art green">✳</div><div class="cardbody"><span class="tag">TECNOLOGIA VERDE</span><h3>Inovação e energia limpa: tecnologia a serviço do planeta</h3><p>Materiais, armazenamento e redes inteligentes apoiam a transição energética.</p><a class="read" href="#inovacao">Continuar lendo ↗</a></div></article>
+</div><p class="note">Conteúdo demonstrativo para projeto acadêmico. As chamadas são textos ilustrativos, não notícias de última hora.</p></section>
+<section class="dark" id="ia"><div class="container darkgrid"><div><p class="eyebrow">ESPECIAL • INTELIGÊNCIA ARTIFICIAL</p><h2>Uma nova era de possibilidades — e responsabilidades.</h2><p>A inteligência artificial combina dados, algoritmos e capacidade computacional para reconhecer padrões, apoiar decisões e criar novas experiências. Seu avanço também exige transparência, segurança, ética e formação contínua.</p></div><div class="dashboard"><span class="eyebrow">TECNOLOGIA EM FOCO • PESQUISA</span><div class="bars"><i style="height:28%"></i><i style="height:42%"></i><i style="height:38%"></i><i style="height:57%"></i><i style="height:65%"></i><i style="height:78%"></i><i style="height:92%"></i></div><p>O futuro é construído coletivamente.</p></div></div></section>
+<section class="container content" id="inovacao"><p class="eyebrow">O QUE ESTÁ MUDANDO</p><h2>Grandes áreas de inovação</h2><h3>Principais áreas da tecnologia</h3>
+<ul>
+  <li>Inteligência Artificial e aprendizado de máquina;</li>
+  <li>Robótica, automação e indústria 4.0;</li>
+  <li>Redes de computadores, 5G e Internet das Coisas;</li>
+  <li>Exploração espacial e tecnologias de satélites;</li>
+  <li>Cibersegurança e proteção de dados;</li>
+  <li>Energias renováveis e tecnologia sustentável.</li>
+</ul>
+<p>Conheça também pesquisas e projetos no
+<a href="https://www.nasa.gov/" target="_blank" rel="noopener noreferrer">portal oficial da NASA</a>.
+</p>
+<div class="topics"><article class="topic"><b>✳</b><h3>Inteligência artificial</h3><p>Aprendizado de máquina, automação e sistemas generativos.</p></article><article class="topic"><b>⌬</b><h3>Biotecnologia</h3><p>Avanços em saúde, genética, diagnósticos e novos materiais.</p></article><article class="topic"><b>⌁</b><h3>Redes e conectividade</h3><p>Infraestrutura, internet das coisas e comunicação global.</p></article><article class="topic"><b>◉</b><h3>Tecnologia sustentável</h3><p>Energia limpa, eficiência e soluções ambientais.</p></article></div></section>
+<section class="timeline" id="historia"><div class="container"><p class="eyebrow">UM OLHAR PARA TRÁS</p><h2>Marcos da evolução tecnológica</h2><div class="events"><article><strong>1940–1950</strong><h3>Computadores eletrônicos</h3><p>Máquinas de grande porte inauguram uma nova etapa do processamento de informações.</p></article><article><strong>1960–1970</strong><h3>Redes e microprocessadores</h3><p>Avanços em comunicação e circuitos integrados pavimentam a computação moderna.</p></article><article><strong>1990–2000</strong><h3>Internet para todos</h3><p>A web transforma comunicação, negócios e acesso ao conhecimento.</p></article><article><strong>2010–HOJE</strong><h3>Mobilidade, nuvem e IA</h3><p>Smartphones, nuvem e inteligência artificial ampliam as possibilidades digitais.</p></article></div></div></section>
+<section class="container newsletter" id="newsletter"><div><p class="eyebrow">INFORMAÇÃO QUE CONECTA</p><h2>Receba o futuro na sua caixa de entrada.</h2><p>Cadastre-se para receber uma seleção de conteúdos sobre tecnologia e inovação.</p></div><form id="form"><label for="email">Seu melhor e-mail</label><br><input id="email" type="email" placeholder="voce@email.com" required><button type="submit">→</button><p id="message" class="note">Formulário demonstrativo: não envia nem armazena dados.</p></form></section>
+</main>
+<footer><div class="container"><a class="logo" href="#"><b>T</b>Tech<span>Mundo</span></a><p>Um olhar conectado sobre a evolução mundial da tecnologia.</p><div class="foot"><span>© <span id="year"></span> TechMundo. Projeto educacional.</span><a href="#">Voltar ao topo ↑</a></div></div></footer>
+<script>
+const menu=document.querySelector('#menu'),nav=document.querySelector('#nav');menu.addEventListener('click',()=>nav.classList.toggle('open'));
+document.querySelectorAll('[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('[data-category]').forEach(card=>card.hidden=btn.dataset.filter!=='all'&&card.dataset.category!==btn.dataset.filter)}));
+document.querySelector('#form').addEventListener('submit',e=>{e.preventDefault();document.querySelector('#message').textContent='E-mail validado! Este formulário é demonstrativo e não envia dados.';document.querySelector('#email').value=''});
+const d=new Date();document.querySelector('#today').textContent=d.toLocaleDateString('pt-BR',{day:'2-digit',month:'long',year:'numeric'});document.querySelector('#year').textContent=d.getFullYear();
+</script>
+</body></html>
